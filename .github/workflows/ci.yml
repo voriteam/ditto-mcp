@@ -55,10 +55,10 @@ jobs:
       matrix:
         include:
           - platform: linux/amd64
-            runner: warp-ubuntu-latest-x64-4x
+            runner: ubuntu-latest
             cache_tag: buildcache-amd64
           - platform: linux/arm64
-            runner: warp-ubuntu-latest-arm64-4x
+            runner: ubuntu-24.04-arm
             cache_tag: buildcache-arm64
     runs-on: ${{ matrix.runner }}
     permissions:
@@ -121,7 +121,7 @@ jobs:
     name: Merge manifest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
-    runs-on: warp-ubuntu-latest-x64-2x
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
